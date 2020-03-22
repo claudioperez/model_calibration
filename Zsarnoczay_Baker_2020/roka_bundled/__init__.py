@@ -27,7 +27,7 @@ online at https://github.com
 """
 __version__ = '0.0.1'
 
-from roka.basics import *
+from roka_bundled.basics import * #![0]
 
 from copy import deepcopy
 
@@ -723,6 +723,8 @@ class Analysis(object):
             ops.analysis('Static')
             ops.analyze(1)
             response.loc[i+1, 'eps'] = ops.nodeDisp(id_ctrl_node, load_dir)
-            response.loc[i+1, 'sig'] = ops.eleResponse(1, 'axialForce')[0]
+#             response.loc[i+1, 'sig'] = ops.eleResponse(1, 'axialForce')[0] #![4]
+            response.loc[i+1, 'sig'] = ops.eleResponse(1, 'axialForce') #![4]
             
         return response
+    
